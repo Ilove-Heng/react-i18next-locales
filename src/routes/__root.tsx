@@ -52,6 +52,8 @@ function RootComponent() {
     const newLang = i18n.language === "en" ? "km" : "en";
     i18n.changeLanguage(newLang);
     localStorage.setItem('language', newLang);
+    // Update HTML lang attribute
+    document.documentElement.lang = newLang;
     // Extract the current path without the language segment
     const currentPath = location.pathname.split("/").slice(2).join("/");
 
