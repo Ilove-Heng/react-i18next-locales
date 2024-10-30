@@ -14,7 +14,7 @@ function HomePage() {
     <div>
       <h1 className="text-3xl font-bold">{t("home.title")}</h1>
       <p className="mt-4">{t("home.description")}</p>
-      <h1>{lang === "en" ? "Welcome" : "Benvenuto"}</h1>
+      <h1>{lang === "en" ? "Welcome" : "សូមស្វាគមន៍"}</h1>
     </div>
   );
 }
