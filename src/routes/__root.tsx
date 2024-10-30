@@ -47,10 +47,12 @@ function RootComponent() {
       i18n.changeLanguage(savedLang);
     }
   }, [i18n]);
-
+   
   const toggleLanguage = () => {
     const newLang = i18n.language === "en" ? "km" : "en";
+    // Update locales
     i18n.changeLanguage(newLang);
+    // Update localstorage
     localStorage.setItem('language', newLang);
     // Update HTML lang attribute
     document.documentElement.lang = newLang;

@@ -3,7 +3,21 @@ import ReactDOM from "react-dom/client";
 import { RouterProvider, createRouter } from "@tanstack/react-router";
 import { routeTree } from "./routeTree.gen";
 import "./i18n/config";
+
+/* CSS */
 import "./tailwind.css";
+
+/* Battambang */
+import '@fontsource/battambang/300.css';
+import '@fontsource/battambang/400.css';
+import '@fontsource/battambang/700.css';
+import '@fontsource/battambang/900.css';
+
+/* Roboto */
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/700.css';
+import '@fontsource/roboto/900.css';
 
 const DefaultParamsContext = createContext({ lang: "en" });
 

@@ -7,7 +7,11 @@ html {
 }
 
 :lang(en) {
-    
+    font-family: 'Roboto', sans-serif;
+}
+
+:lang(km) {
+    font-family: 'Battambang', system-ui;
 }
 
 * {

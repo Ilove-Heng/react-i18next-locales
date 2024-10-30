@@ -21,12 +21,14 @@
     "vite": "^5.4.8"
   },
   "dependencies": {
+    "@fontsource/battambang": "^5.1.0",
+    "@fontsource/roboto": "^5.1.0",
     "@tanstack/react-router": "^1.77.8",
     "@tanstack/router-devtools": "^1.77.8",
     "@types/node": "^22.8.4",
     "i18next": "^23.16.4",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "^19.0.0-rc-0bc30748-20241028",
+    "react-dom": "^19.0.0-rc-0bc30748-20241028",
     "react-i18next": "^15.1.0"
   }
 }
