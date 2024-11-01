@@ -12,27 +12,28 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 export const Route = createRootRoute({
-
   component: RootComponent,
   beforeLoad: async ({ location }) => {
-    if(location.pathname === '/') {
-      const savedLang = localStorage.getItem('language');
-      const browserLang = navigator.language.split('-')[0]
-      const defaultLang = SUPPORTED_LANGUAGES.includes(savedLang as SupportedLanguage)
+    if (location.pathname === "/") {
+      const savedLang = localStorage.getItem("language");
+      const browserLang = navigator.language.split("-")[0];
+      const defaultLang = SUPPORTED_LANGUAGES.includes(
+        savedLang as SupportedLanguage
+      )
         ? String(savedLang)
         : SUPPORTED_LANGUAGES.includes(browserLang as SupportedLanguage)
-        ? browserLang
-        : 'en'; // Fallback to 'en' if no valid language is found
+          ? browserLang
+          : "en"; // Fallback to 'en' if no valid language is found
 
       // Store the default language in local storage
-      localStorage.setItem('language', defaultLang);
-      
+      localStorage.setItem("language", defaultLang);
+
       throw redirect({
-        to: '/$lang',
-        params: { lang: defaultLang }
-      })
+        to: "/$lang",
+        params: { lang: defaultLang },
+      });
     }
-  }
+  },
 });
 
 function RootComponent() {
@@ -40,20 +41,46 @@ function RootComponent() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // Extract language from URL path
+  const getCurrentLanguageFromPath = () => {
+    const pathSegments = location.pathname.split("/");
+    return pathSegments[1] || "en"; // Default to 'en' if no language segment
+  };
+
   useEffect(() => {
+    const urlLang = getCurrentLanguageFromPath();
+    // Validate if the URL language is supported
+    if (SUPPORTED_LANGUAGES.includes(urlLang as SupportedLanguage)) {
+      // Update i18n language
+      i18n.changeLanguage(urlLang);
+      // Update localStorage
+      localStorage.setItem("language", urlLang);
+      // Update HTML lang attribute
+      document.documentElement.lang = urlLang;
+    } else {
+      // If URL has unsupported language, redirect to English
+      const currentPath = location.pathname.split("/").slice(2).join("/");
+      navigate({
+        to: `/en/${currentPath}`,
+      });
+    }
+
     // Retrieve the language from local storage on component mount
-    const savedLang = localStorage.getItem('language');
-    if (savedLang && SUPPORTED_LANGUAGES.includes(savedLang as SupportedLanguage)) {
+    const savedLang = localStorage.getItem("language");
+    if (
+      savedLang &&
+      SUPPORTED_LANGUAGES.includes(savedLang as SupportedLanguage)
+    ) {
       i18n.changeLanguage(savedLang);
     }
-  }, [i18n]);
-   
+  }, [location.pathname, i18n, navigate]);
+
   const toggleLanguage = () => {
     const newLang = i18n.language === "en" ? "km" : "en";
     // Update locales
     i18n.changeLanguage(newLang);
     // Update localstorage
-    localStorage.setItem('language', newLang);
+    localStorage.setItem("language", newLang);
     // Update HTML lang attribute
     document.documentElement.lang = newLang;
     // Extract the current path without the language segment
@@ -70,7 +97,7 @@ function RootComponent() {
     return supportedLanguages.includes(lang) ? lang : "en"; // Default to 'en' if invalid
   };
 
-  const currentLang = validateLanguage(i18n.language);
+  const currentLang = validateLanguage(getCurrentLanguageFromPath());
 
   return (
     <div className="min-h-screen">
@@ -102,9 +129,7 @@ function RootComponent() {
               {t("navigation.about")}
             </Link>
           </div>
-          <button
-            onClick={toggleLanguage}
-          >
+          <button onClick={toggleLanguage}>
             <LanguageSelector></LanguageSelector>
           </button>
         </div>
