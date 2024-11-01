@@ -10,6 +10,8 @@ import {
 } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { RowList } from "./$lang.index";
+import CountProvider, { useCountStore } from "@/store/CountProvder";
 
 export const Route = createRootRoute({
   component: RootComponent,
@@ -129,6 +131,10 @@ function RootComponent() {
               {t("navigation.about")}
             </Link>
           </div>
+          <div>
+            hi
+          </div>
+
           <button onClick={toggleLanguage}>
             <LanguageSelector></LanguageSelector>
           </button>
