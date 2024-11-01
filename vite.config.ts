@@ -1,7 +1,8 @@
 import { fileURLToPath, URL } from "url";
-import { defineConfig } from "vite";
+import { defineConfig, mergeConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
+import { tanstackViteConfig } from '@tanstack/config/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -14,3 +15,8 @@ export default defineConfig({
     },
   },
 });
+
+// export default mergeConfig(
+//   config,
+//   tanstackViteConfig()
+// )

@@ -8,16 +8,16 @@ import "./i18n/config";
 import "./tailwind.css";
 
 /* Battambang */
-import '@fontsource/battambang/300.css';
-import '@fontsource/battambang/400.css';
-import '@fontsource/battambang/700.css';
-import '@fontsource/battambang/900.css';
+import "@fontsource/battambang/300.css";
+import "@fontsource/battambang/400.css";
+import "@fontsource/battambang/700.css";
+import "@fontsource/battambang/900.css";
 
 /* Roboto */
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/700.css';
-import '@fontsource/roboto/900.css';
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/700.css";
+import "@fontsource/roboto/900.css";
 
 const DefaultParamsContext = createContext({ lang: "en" });
 
@@ -33,10 +33,12 @@ declare module "@tanstack/react-router" {
     router: typeof router;
   }
 }
+let rootElement: HTMLElement | null = null;
+if (typeof document !== "undefined") {
+  rootElement = document.getElementById("app");
+}
 
-const rootElement = document.getElementById("app")!;
-
-if (!rootElement.innerHTML) {
+if (rootElement && !rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
     <DefaultParamsContext.Provider value={{ lang: "en" }}>

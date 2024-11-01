@@ -6,7 +6,7 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "dev": "vite --port=3001",
-    "build": "vite build",
+    "build": "vite build && publint --strict",
     "preview": "vite preview",
     "start": "vite"
   },
@@ -23,10 +23,14 @@
   "dependencies": {
     "@fontsource/battambang": "^5.1.0",
     "@fontsource/roboto": "^5.1.0",
+    "@tanstack/config": "^0.13.4",
     "@tanstack/react-router": "^1.77.8",
     "@tanstack/router-devtools": "^1.77.8",
+    "@tanstack/start": "^1.78.0",
     "@types/node": "^22.8.4",
+    "ajv": "^8.17.1",
     "i18next": "^23.16.4",
+    "publint": "^0.2.12",
     "react": "^19.0.0-rc-0bc30748-20241028",
     "react-dom": "^19.0.0-rc-0bc30748-20241028",
     "react-i18next": "^15.1.0"
