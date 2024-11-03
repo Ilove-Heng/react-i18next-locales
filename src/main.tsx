@@ -5,7 +5,7 @@ import { routeTree } from "./routeTree.gen";
 import "./i18n/config";
 
 /* CSS */
-import "./tailwind.css";
+import "@/assets/css/tailwind.css";
 
 /* Battambang */
 import "@fontsource/battambang/300.css";
@@ -18,6 +18,10 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/700.css";
 import "@fontsource/roboto/900.css";
+
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
 
 const DefaultParamsContext = createContext({ lang: "en" });
 
@@ -41,8 +45,11 @@ if (typeof document !== "undefined") {
 if (rootElement && !rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
+    <QueryClientProvider client={queryClient}>
     <DefaultParamsContext.Provider value={{ lang: "en" }}>
       <RouterProvider router={router} />
     </DefaultParamsContext.Provider>
+    </QueryClientProvider>
+    
   );
 }

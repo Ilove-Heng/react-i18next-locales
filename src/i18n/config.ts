@@ -4,6 +4,9 @@ import { initReactI18next } from "react-i18next";
 const resources = {
   en: {
     translation: {
+      folder: {
+        title: "Folder Structure",
+      },
       home: {
         title: "Welcome",
         description: "This is the home page",
@@ -18,6 +21,7 @@ const resources = {
       },
       navigation: {
         home: "Home",
+        product: 'Product',
         project: "Project",
         about: "About",
         contact: "Contact",
@@ -26,6 +30,9 @@ const resources = {
   },
   it: {
     translation: {
+      folder: {
+        title: "Cartella",
+      },
       home: {
         title: "Benvenuto",
         description: "Questa è la home page",
@@ -48,6 +55,9 @@ const resources = {
   },
   km: {
     translation: {
+      folder: {
+        title: "រចនាសម្ព័ន្ធថត",
+      },
       home: {
         title: "សូមស្វាគមន៍",
         description: "នេះជាទំព័រដើម",
@@ -62,6 +72,7 @@ const resources = {
       },
       navigation: {
         home: "ផ្ទះ",
+        product: 'ផលិតផល',
         project: "គម្រោង",
         about: "អំពី",
         contact: "ទំនាក់ទំនង",
