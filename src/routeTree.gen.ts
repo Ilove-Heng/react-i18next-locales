@@ -12,6 +12,7 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as LangIndexImport } from './routes/$lang.index'
+import { Route as LangUiImport } from './routes/$lang.ui'
 import { Route as LangProjectImport } from './routes/$lang.project'
 import { Route as LangProductImport } from './routes/$lang.product'
 import { Route as LangAboutImport } from './routes/$lang.about'
@@ -21,6 +22,12 @@ import { Route as LangAboutImport } from './routes/$lang.about'
 const LangIndexRoute = LangIndexImport.update({
   id: '/$lang/',
   path: '/$lang/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const LangUiRoute = LangUiImport.update({
+  id: '/$lang/ui',
+  path: '/$lang/ui',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -67,6 +74,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangProjectImport
       parentRoute: typeof rootRoute
     }
+    '/$lang/ui': {
+      id: '/$lang/ui'
+      path: '/$lang/ui'
+      fullPath: '/$lang/ui'
+      preLoaderRoute: typeof LangUiImport
+      parentRoute: typeof rootRoute
+    }
     '/$lang/': {
       id: '/$lang/'
       path: '/$lang'
@@ -83,6 +97,7 @@ export interface FileRoutesByFullPath {
   '/$lang/about': typeof LangAboutRoute
   '/$lang/product': typeof LangProductRoute
   '/$lang/project': typeof LangProjectRoute
+  '/$lang/ui': typeof LangUiRoute
   '/$lang': typeof LangIndexRoute
 }
 
@@ -90,6 +105,7 @@ export interface FileRoutesByTo {
   '/$lang/about': typeof LangAboutRoute
   '/$lang/product': typeof LangProductRoute
   '/$lang/project': typeof LangProjectRoute
+  '/$lang/ui': typeof LangUiRoute
   '/$lang': typeof LangIndexRoute
 }
 
@@ -98,19 +114,31 @@ export interface FileRoutesById {
   '/$lang/about': typeof LangAboutRoute
   '/$lang/product': typeof LangProductRoute
   '/$lang/project': typeof LangProjectRoute
+  '/$lang/ui': typeof LangUiRoute
   '/$lang/': typeof LangIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/$lang/about' | '/$lang/product' | '/$lang/project' | '/$lang'
+  fullPaths:
+    | '/$lang/about'
+    | '/$lang/product'
+    | '/$lang/project'
+    | '/$lang/ui'
+    | '/$lang'
   fileRoutesByTo: FileRoutesByTo
-  to: '/$lang/about' | '/$lang/product' | '/$lang/project' | '/$lang'
+  to:
+    | '/$lang/about'
+    | '/$lang/product'
+    | '/$lang/project'
+    | '/$lang/ui'
+    | '/$lang'
   id:
     | '__root__'
     | '/$lang/about'
     | '/$lang/product'
     | '/$lang/project'
+    | '/$lang/ui'
     | '/$lang/'
   fileRoutesById: FileRoutesById
 }
@@ -119,6 +147,7 @@ export interface RootRouteChildren {
   LangAboutRoute: typeof LangAboutRoute
   LangProductRoute: typeof LangProductRoute
   LangProjectRoute: typeof LangProjectRoute
+  LangUiRoute: typeof LangUiRoute
   LangIndexRoute: typeof LangIndexRoute
 }
 
@@ -126,6 +155,7 @@ const rootRouteChildren: RootRouteChildren = {
   LangAboutRoute: LangAboutRoute,
   LangProductRoute: LangProductRoute,
   LangProjectRoute: LangProjectRoute,
+  LangUiRoute: LangUiRoute,
   LangIndexRoute: LangIndexRoute,
 }
 
@@ -142,6 +172,7 @@ export const routeTree = rootRoute
         "/$lang/about",
         "/$lang/product",
         "/$lang/project",
+        "/$lang/ui",
         "/$lang/"
       ]
     },
@@ -153,6 +184,9 @@ export const routeTree = rootRoute
     },
     "/$lang/project": {
       "filePath": "$lang.project.tsx"
+    },
+    "/$lang/ui": {
+      "filePath": "$lang.ui.tsx"
     },
     "/$lang/": {
       "filePath": "$lang.index.tsx"

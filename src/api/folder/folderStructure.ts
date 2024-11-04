@@ -16,8 +16,8 @@ export const nodes: FolderNode[] = [
                 {
                   name: '2000s',
                   nodes: [
-                    { name: 'Gladiator.mp4' },
-                    { name: 'The-Dark-Knight.mp4' },
+                    { name: 'Gladiator.ts' },
+                    { name: 'The-Dark-Knight.ts' },
                   ],
                 },
                 { name: '2010s', nodes: [] },
@@ -25,12 +25,12 @@ export const nodes: FolderNode[] = [
             },
             {
               name: 'Comedy',
-              nodes: [{ name: '2000s', nodes: [{ name: 'Superbad.mp4' }] }],
+              nodes: [{ name: '2000s', nodes: [{ name: 'Superbad.ts' }] }],
             },
             {
               name: 'Drama',
               nodes: [
-                { name: '2000s', nodes: [{ name: 'American-Beauty.mp4' }] },
+                { name: '2000s', nodes: [{ name: 'American-Beauty.tsx' }] },
               ],
             },
           ],
@@ -47,7 +47,7 @@ export const nodes: FolderNode[] = [
           name: 'Documents',
           nodes: [],
         },
-        { name: 'passwords.txt' },
+        { name: 'passwords.ts' },
       ],
     },
   ];

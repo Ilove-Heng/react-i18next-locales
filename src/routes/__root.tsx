@@ -1,5 +1,5 @@
 import { SUPPORTED_LANGUAGES, SupportedLanguage } from "@/types/i18n";
-import { LanguageSelector } from "@components/LanguageSelector";
+import { LanguageSelector } from "@components/shared/LanguageSelector";
 import {
   Outlet,
   createRootRoute,
@@ -122,23 +122,15 @@ function RootComponent() {
             </Link>
 
             <Link
-              to={`/${currentLang}/project`}
+              to={`/${currentLang}/ui`}
               params={{ lang: currentLang }}
               className="[&.active]:text-green-500 hover:text-gray-300"
             >
-              {t("navigation.project")}
-            </Link>
-
-            <Link
-              to={`/${currentLang}/about`}
-              params={{ lang: currentLang }}
-              className="[&.active]:text-green-500 hover:text-gray-300"
-            >
-              {t("navigation.about")}
+              {t("navigation.ui")}
             </Link>
           </div>
           <div>
-            {/* hi */}
+           
           </div>
 
           <button onClick={toggleLanguage}>

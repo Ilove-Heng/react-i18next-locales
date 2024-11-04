@@ -1,6 +1,6 @@
-import DarkModeToggle from "@components/DarkModeToggle";
+import DarkModeToggle from "@components/shared/DarkModeToggle";
 import Counter from "@components/shared/Counter";
-import UserForm from "@components/UserForm";
+import UserForm from "@components/shared/UserForm";
 import { createFileRoute } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import CountProvider, { useCountStore } from "@/store/CountProvder";

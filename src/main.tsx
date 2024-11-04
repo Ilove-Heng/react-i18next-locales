@@ -50,6 +50,5 @@ if (rootElement && !rootElement.innerHTML) {
       <RouterProvider router={router} />
     </DefaultParamsContext.Provider>
     </QueryClientProvider>
-    
   );
 }

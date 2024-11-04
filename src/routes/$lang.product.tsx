@@ -1,9 +1,10 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { fetchProducts, ProductFilters } from '@/api/product/products';
-import ProductList from '@components/ProductList/ProductList';
+import ProductList from '@components/custom-filter-component/ProductList';
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
-import ProductListFilters from '@components/ProductList/ProductListFilters';
+import ProductListFilters from '@components/custom-filter-component/ProductListFilters';
+import { useTranslation } from 'react-i18next';
 
 // TODO: add filter
 export const Route = createFileRoute('/$lang/product')({
@@ -11,6 +12,7 @@ export const Route = createFileRoute('/$lang/product')({
 })
 
 function ProductPage(): JSX.Element {
+  const { t } = useTranslation();
   const [search, setSearch] = useState<ProductFilters['search']>();
   const [category, setCategory] = useState<ProductFilters['category']>();
   const [maxPrice, setMaxPrice] = useState<ProductFilters['maxPrice']>();
@@ -24,7 +26,7 @@ function ProductPage(): JSX.Element {
     <div>
       <div className="flex flex-col gap-2">
         <div>
-          <h1 className="text-4xl font-bold">Products</h1>
+          <h1 className="text-4xl font-bold">{t("product.title")}</h1>
         </div>
         {/* For product filer */}
         <ProductListFilters
